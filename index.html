@@ -35,8 +35,8 @@
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -51,12 +51,49 @@
             font-size: 1.1rem;
         }
 
-        section {
+        /* Навигация вкладок */
+        .tabs-nav {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Содержимое вкладок */
+        .tab-content {
+            display: none;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 2rem;
-            margin-bottom: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         h2 {
@@ -91,26 +128,6 @@
             color: var(--accent-color);
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .card {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            padding: 1.25rem;
-            border-radius: 6px;
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
         footer {
             text-align: center;
             margin-top: 4rem;
@@ -125,47 +142,83 @@
 
     <div class="container">
         <header>
-            <h1>Архитектурное моделирование под АГР</h1>
-            <p class="subtitle">Требования Москомархитектуры к цифровым 3D-моделям и визуализации</p>
+            <h1>Процессы подготовки АГР</h1>
+            <p class="subtitle">Технический регламент и этапы согласования с Москомархитектурой</p>
         </header>
 
-        <section>
-            <h2>О стандарте АГР</h2>
-            <p>Получение свидетельства об утверждении архитектурно-градостроительного решения (АГР) в Москве требует строгой регламентации цифровых моделей. Модели должны точно отражать объемы застройки, материалы отделки и гармонично вписываться в существующий городской контекст.</p>
-        </section>
+        <!-- Переключатели вкладок -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. Анализ и исходные данные</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">2. 3D-моделирование</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab3')">3. Визуализация и контекст</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab4')">4. Подача на mos.ru</button>
+        </div>
 
-        <section>
-            <h2>Ключевые требования к 3D-моделям</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Детализация (LOD)</h3>
-                    <p>Проработка геометрии фасадов, оконных и входных групп, карнизов и элементов благоустройства в соответствии с регламентом Москомархитектуры.</p>
-                </div>
-                <div class="card">
-                    <h3>Контекст окружения</h3>
-                    <p>Интеграция проектируемого объекта в единую городскую 3D-модель Москвы с учетом существующей застройки и рельефа.</p>
-                </div>
-                <div class="card">
-                    <h3>Материалы и цвета</h3>
-                    <p>Строгое соответствие колористическому паспорту города, корректная настройка физических свойств материалов (PBR).</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Этапы подготовки проекта</h2>
+        <!-- Контент Вкладки 1 -->
+        <div id="tab1" class="tab-content active">
+            <h2>Этап 1: Сбор и анализ исходных данных</h2>
+            <p>На первом этапе проводится анализ градостроительной ситуации, ограничений площадки и параметров застройки для строгого соответствия нормативам.</p>
             <ul>
-                <li>Анализ исходно-разрешительной документации (ГПЗУ, регламенты зон охраны).</li>
-                <li>Разработка концепции и объемно-пространственного решения (АГР).</li>
-                <li>Подготовка высокоточной 3D-модели и фотореалистичных визуализаций с ключевых точек обзора.</li>
-                <li>Формирование итогового пакета материалов для подачи в электронном виде через портал mos.ru.</li>
+                <li>Изучение ГПЗУ (Градостроительного плана земельного участка).</li>
+                <li>Анализ предельной высотности, плотности и отступов от границ участка.</li>
+                <li>Учет градостроительных зон и требований к фасадным решениям района.</li>
             </ul>
-        </section>
+        </div>
+
+        <!-- Контент Вкладки 2 -->
+        <div id="tab2" class="tab-content">
+            <h2>Этап 2: Цифровое 3D-моделирование (LOD)</h2>
+            <p>Создание геометрически точной модели объекта с высоким уровнем детализации (LOD), подходящей под стандарты Москомархитектуры.</p>
+            <ul>
+                <li>Моделирование оконных блоков, витражей, входов и декоративных фасадных элементов.</li>
+                <li>Проработка объемов кровли и инженерно-технического оборудования.</li>
+                <li>Формирование чистой топологии без артефактов и дублирующейся геометрии.</li>
+            </ul>
+        </div>
+
+        <!-- Контент Вкладки 3 -->
+        <div id="tab3" class="tab-content">
+            <h2>Этап 3: Настройка материалов и вписка в контекст</h2>
+            <p>Создание корректных материалов, настройка PBR-шейдеров и интеграция проектируемого объекта в окружение.</p>
+            <ul>
+                <li>Настройка фасадных материалов согласно утвержденному колористическому решению.</li>
+                <li>Сборка пространственного окружения (рельеф, дорожное покрытие, благоустройство).</li>
+                <li>Рендеринг ракурсов с контрольных точек обзора (вписка в фотоматериалы).</li>
+            </ul>
+        </div>
+
+        <!-- Контент Вкладки 4 -->
+        <div id="tab4" class="tab-content">
+            <h2>Этап 4: Комплектация альбома и регистрация</h2>
+            <p>Формирование итогового пакета документов для получения свидетельства АГР.</p>
+            <ul>
+                <li>Экспорт 3D-модели в требуемые векторные и трехмерные форматы.</li>
+                <li>Оформление буклета АГР со схемами, планами и визуализациями.</li>
+                <li>Загрузка электронной заявки на портале mos.ru для прохождения экспертизы.</li>
+            </ul>
+        </div>
 
         <footer>
-            <p>&copy; 2026 Проектный портфель / Техническое архитектурное сопровождение</p>
+            <p>&copy; 2026 Проектный портфель / Сопровождение АГР Москва</p>
         </footer>
     </div>
+
+    <!-- Логика переключения вкладок -->
+    <script>
+        function openTab(evt, tabId) {
+            // Скрываем все вкладки
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Убираем активный класс у всех кнопок
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Показываем текущую вкладку и добавляем класс active кнопке
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
