@@ -25,11 +25,11 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -51,39 +51,60 @@
             font-size: 1.1rem;
         }
 
-        /* Навигация вкладок */
+        /* Общий макет с колонками */
+        .layout {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+        }
+
+        /* Меню вкладок слева */
         .tabs-nav {
             display: flex;
+            flex-direction: column;
             gap: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 1.5rem;
-            overflow-x: auto;
+            width: 300px;
+            flex-shrink: 0;
         }
 
         .tab-btn {
-            background: none;
-            border: none;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            padding: 0.75rem 1.25rem;
-            font-size: 1rem;
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
+            border-radius: 6px;
             transition: all 0.2s ease;
-            white-space: nowrap;
+            width: 100%;
         }
 
         .tab-btn:hover {
             color: var(--text-primary);
+            border-color: var(--text-secondary);
         }
 
         .tab-btn.active {
-            color: var(--accent-color);
-            border-bottom-color: var(--accent-color);
+            color: #ffffff;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-color);
+            border-left: 4px solid var(--accent-color);
         }
 
-        /* Содержимое вкладок */
+        /* Область контента справа */
+        .content-area {
+            flex-grow: 1;
+            width: 100%;
+        }
+
         .tab-content {
             display: none;
             background-color: var(--card-bg);
@@ -146,56 +167,61 @@
             <p class="subtitle">Технический регламент и этапы согласования с Москомархитектурой</p>
         </header>
 
-        <!-- Переключатели вкладок -->
-        <div class="tabs-nav">
-            <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. Анализ и исходные данные</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab2')">2. 3D-моделирование</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab3')">3. Визуализация и контекст</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab4')">4. Подача на mos.ru</button>
-        </div>
+        <div class="layout">
+            <!-- Левая колонка: Кнопки вкладок -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. Анализ и исходные данные</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab2')">2. 3D-моделирование</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab3')">3. Визуализация и контекст</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab4')">4. Подача на mos.ru</button>
+            </div>
 
-        <!-- Контент Вкладки 1 -->
-        <div id="tab1" class="tab-content active">
-            <h2>Этап 1: Сбор и анализ исходных данных</h2>
-            <p>На первом этапе проводится анализ градостроительной ситуации, ограничений площадки и параметров застройки для строгого соответствия нормативам.</p>
-            <ul>
-                <li>Изучение ГПЗУ (Градостроительного плана земельного участка).</li>
-                <li>Анализ предельной высотности, плотности и отступов от границ участка.</li>
-                <li>Учет градостроительных зон и требований к фасадным решениям района.</li>
-            </ul>
-        </div>
+            <!-- Правая колонка: Содержимое -->
+            <div class="content-area">
+                <!-- Контент Вкладки 1 -->
+                <div id="tab1" class="tab-content active">
+                    <h2>Этап 1: Сбор и анализ исходных данных</h2>
+                    <p>На первом этапе проводится анализ градостроительной ситуации, ограничений площадки и параметров застройки для строгого соответствия нормативам.</p>
+                    <ul>
+                        <li>Изучение ГПЗУ (Градостроительного плана земельного участка).</li>
+                        <li>Анализ предельной высотности, плотности и отступов от границ участка.</li>
+                        <li>Учет градостроительных зон и требований к фасадным решениям района.</li>
+                    </ul>
+                </div>
 
-        <!-- Контент Вкладки 2 -->
-        <div id="tab2" class="tab-content">
-            <h2>Этап 2: Цифровое 3D-моделирование (LOD)</h2>
-            <p>Создание геометрически точной модели объекта с высоким уровнем детализации (LOD), подходящей под стандарты Москомархитектуры.</p>
-            <ul>
-                <li>Моделирование оконных блоков, витражей, входов и декоративных фасадных элементов.</li>
-                <li>Проработка объемов кровли и инженерно-технического оборудования.</li>
-                <li>Формирование чистой топологии без артефактов и дублирующейся геометрии.</li>
-            </ul>
-        </div>
+                <!-- Контент Вкладки 2 -->
+                <div id="tab2" class="tab-content">
+                    <h2>Этап 2: Цифровое 3D-моделирование (LOD)</h2>
+                    <p>Создание геометрически точной модели объекта с высоким уровнем детализации (LOD), подходящей под стандарты Москомархитектуры.</p>
+                    <ul>
+                        <li>Моделирование оконных блоков, витражей, входов и декоративных фасадных элементов.</li>
+                        <li>Проработка объемов кровли и инженерно-технического оборудования.</li>
+                        <li>Формирование чистой топологии без артефактов и дублирующейся геометрии.</li>
+                    </ul>
+                </div>
 
-        <!-- Контент Вкладки 3 -->
-        <div id="tab3" class="tab-content">
-            <h2>Этап 3: Настройка материалов и вписка в контекст</h2>
-            <p>Создание корректных материалов, настройка PBR-шейдеров и интеграция проектируемого объекта в окружение.</p>
-            <ul>
-                <li>Настройка фасадных материалов согласно утвержденному колористическому решению.</li>
-                <li>Сборка пространственного окружения (рельеф, дорожное покрытие, благоустройство).</li>
-                <li>Рендеринг ракурсов с контрольных точек обзора (вписка в фотоматериалы).</li>
-            </ul>
-        </div>
+                <!-- Контент Вкладки 3 -->
+                <div id="tab3" class="tab-content">
+                    <h2>Этап 3: Настройка материалов и вписка в контекст</h2>
+                    <p>Создание корректных материалов, настройка PBR-шейдеров и интеграция проектируемого объекта в окружение.</p>
+                    <ul>
+                        <li>Настройка фасадных материалов согласно утвержденному колористическому решению.</li>
+                        <li>Сборка пространственного окружения (рельеф, дорожное покрытие, благоустройство).</li>
+                        <li>Рендеринг ракурсов с контрольных точек обзора (вписка в фотоматериалы).</li>
+                    </ul>
+                </div>
 
-        <!-- Контент Вкладки 4 -->
-        <div id="tab4" class="tab-content">
-            <h2>Этап 4: Комплектация альбома и регистрация</h2>
-            <p>Формирование итогового пакета документов для получения свидетельства АГР.</p>
-            <ul>
-                <li>Экспорт 3D-модели в требуемые векторные и трехмерные форматы.</li>
-                <li>Оформление буклета АГР со схемами, планами и визуализациями.</li>
-                <li>Загрузка электронной заявки на портале mos.ru для прохождения экспертизы.</li>
-            </ul>
+                <!-- Контент Вкладки 4 -->
+                <div id="tab4" class="tab-content">
+                    <h2>Этап 4: Комплектация альбома и регистрация</h2>
+                    <p>Формирование итогового пакета документов для получения свидетельства АГР.</p>
+                    <ul>
+                        <li>Экспорт 3D-модели в требуемые векторные и трехмерные форматы.</li>
+                        <li>Оформление буклета АГР со схемами, планами и визуализациями.</li>
+                        <li>Загрузка электронной заявки на портале mos.ru для прохождения экспертизы.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <footer>
@@ -203,18 +229,14 @@
         </footer>
     </div>
 
-    <!-- Логика переключения вкладок -->
     <script>
         function openTab(evt, tabId) {
-            // Скрываем все вкладки
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Убираем активный класс у всех кнопок
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Показываем текущую вкладку и добавляем класс active кнопке
             document.getElementById(tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
