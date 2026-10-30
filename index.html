@@ -25,12 +25,13 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 2.5rem 1rem;
+            padding: 2.5rem 0; /* Убрали боковые отступы у body */
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
+            width: 100%;
+            padding: 0 1.5rem; /* Небольшой отступ внутри контейнера при желании */
+            margin: 0;
         }
 
         header {
@@ -73,11 +74,12 @@
             border: 0;
         }
 
-        /* Общий макет с колонками */
+        /* Общий макет: колонки во всю ширину */
         .layout {
             display: flex;
             gap: 2rem;
             align-items: flex-start;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -86,12 +88,12 @@
             }
         }
 
-        /* Меню вкладок слева */
+        /* Меню вкладок слева (прижато в самый край) */
         .tabs-nav {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            width: 300px;
+            width: 280px;
             flex-shrink: 0;
         }
 
@@ -195,7 +197,7 @@
         </section>
 
         <div class="layout">
-            <!-- Левая колонка: Кнопки вкладок -->
+            <!-- Левая колонка: Кнопки вкладок (прижаты влево) -->
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. Анализ и исходные данные</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab2')">2. 3D-моделирование</button>
