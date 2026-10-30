@@ -25,12 +25,12 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 2.5rem 1.5rem;
+            padding: 2rem;
         }
 
+        /* Контейнер растянут на 100% ширины */
         .container {
             width: 100%;
-            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -52,12 +52,13 @@
             font-size: 1.1rem;
         }
 
-        /* Верхняя секция: Вкладки слева + Видео справа */
+        /* Верхняя секция во всю ширину */
         .hero-section {
             display: flex;
             gap: 1.5rem;
             align-items: stretch;
             margin-bottom: 2rem;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -66,12 +67,12 @@
             }
         }
 
-        /* Навигационные кнопки слева от видео */
+        /* Кнопки вкладок в самом левом краю */
         .tabs-nav {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            width: 280px;
+            width: 260px;
             flex-shrink: 0;
         }
 
@@ -101,13 +102,13 @@
             border-left: 4px solid var(--accent-color);
         }
 
-        /* Видео контейнер справа от вкладок */
+        /* Окно видео расширяется на всю оставшуюся ширину */
         .video-container {
             position: relative;
             flex-grow: 1;
             width: 100%;
-            padding-bottom: 40%; /* Пропорциональная высота для соседства с кнопками */
-            min-height: 250px;
+            padding-bottom: 42%; /* Сохраняет комфортное пропорциональное соотношение */
+            min-height: 300px;
             height: 0;
             border-radius: 8px;
             overflow: hidden;
@@ -124,7 +125,7 @@
             border: 0;
         }
 
-        /* Нижняя часть: Описание выбранного этапа */
+        /* Нижняя часть с описанием во всю ширину */
         .content-area {
             width: 100%;
         }
@@ -191,7 +192,7 @@
             <p class="subtitle">Технический регламент и этапы согласования с Москомархитектурой</p>
         </header>
 
-        <!-- Верхняя секция: кнопки слева, видео справа -->
+        <!-- Верхняя секция: кнопки слева, расширенное видео справа -->
         <div class="hero-section">
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. Анализ и исходные данные</button>
