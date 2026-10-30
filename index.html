@@ -51,9 +51,12 @@
             font-size: 1.1rem;
         }
 
-        /* Видео-шоурил */
+        /* Адаптивный блок для YouTube видео */
         .video-container {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
+            height: 0;
             margin-bottom: 2.5rem;
             border-radius: 8px;
             overflow: hidden;
@@ -61,10 +64,13 @@
             background-color: #000;
         }
 
-        .video-container video {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            border: 0;
         }
 
         /* Общий макет с колонками */
@@ -183,12 +189,9 @@
             <p class="subtitle">Технический регламент и этапы согласования с Москомархитектурой</p>
         </header>
 
-        <!-- Блок Шоурила -->
+        <!-- YouTube Шоурил плеер -->
         <section class="video-container">
-            <video controls autoplay muted loop playsinline>
-                <source src="showreel.mp4" type="video/mp4">
-                Ваш браузер не поддерживает воспроизведение видео.
-            </video>
+            <iframe src="https://www.youtube.com/embed/SG1d68ZkiKw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </section>
 
         <div class="layout">
